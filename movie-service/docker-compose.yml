@@ -1,14 +1,16 @@
 version: '3.3'
 services:
-  mysql:
-    build:
-      context: .
-      dockerfile: Dockerfile.mssql
+  postgresql:
+    image: sameersbn/postgresql:9.6-2
     ports:
-      - '3306:3306'
+      - '5432:5432'
     expose:
-      - '3306'
-    container_name: 'mysql'
+      - '5432'
+    container_name: 'postgresql'
+    environment:
+      - DB_USER=sa
+      - DB_PASS=bilisimio
+      - DB_NAME=movie
 
   movie:
     build:
@@ -17,7 +19,7 @@ services:
     ports:
       - '8080:8080'
     links:
-      - 'mysql'
+      - 'postgresql'
     depends_on:
-      - 'mysql'
+      - 'postgresql'
     container_name: 'movie-service'

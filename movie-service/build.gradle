@@ -8,7 +8,6 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath group: 'org.flywaydb', name: 'flyway-gradle-plugin', version: '5.0.4'
-		classpath 'mysql:mysql-connector-java:5.1.45'
 	}
 }
 
@@ -31,13 +30,13 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.flywaydb:flyway-core:5.0.4')
 	compile('org.springframework.boot:spring-boot-starter-jersey')
-	runtime('mysql:mysql-connector-java')
+	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 
 flyway {
-	url = 'jdbc:mysql://localhost:3306/movie'
+	url = 'jdbc:postgresql://localhost:5432/movie'
 	user = 'sa'
 	password = 'bilisimio'
 }
