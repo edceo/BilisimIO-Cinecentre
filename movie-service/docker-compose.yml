@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile.mssql
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    container_name: 'mysql'
+
+  movie:
+    build:
+      context: .
+      dockerfile: Dockerfile.movie
+    ports:
+      - '8080:8080'
+    links:
+      - 'mysql'
+    depends_on:
+      - 'mysql'
+    container_name: 'movie-service'
