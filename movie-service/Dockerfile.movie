@@ -17,4 +17,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV PATH $JAVA_HOME/bin:$PATH
 
 ADD build/lib/movie-service-0.0.1.jar .
-CMD java -jar movie-service-0.0.1.jar
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "movie-service-0.0.1.jar"]
