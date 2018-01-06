@@ -23,3 +23,15 @@ services:
     depends_on:
       - 'postgresql'
     container_name: 'movie-service'
+    deploy:
+      mode: replicated
+      replicas: 6
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - '80:80'
+    links:
+      - movie
