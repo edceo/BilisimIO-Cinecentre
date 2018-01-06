@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 @Controller
 public class HomeController {
 
-    Logger logger = Logger.getLogger(HomeController.class.getName());
+    private Logger logger = Logger.getLogger(HomeController.class.getName());
 
     @Autowired
     private Environment environment;
